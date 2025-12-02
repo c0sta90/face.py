@@ -2,11 +2,6 @@ from bibliotecas import cv2, os, np # Bibliotecas necessárias importadas de rec
 from reconhecimento_head import ReconhecimentoHead # Importa a classe ReconhecimentoHead
 
 class ReconhecimentoFace: # class ReconhecimentoFace:
-    """
-    Classe que gerencia o cadastro de rostos e o reconhecimento facial usando LBPH.
-    Usa as configurações e variáveis do ReconhecimentoHead.
-    """
-
     def __init__(self, head: ReconhecimentoHead): #constructor 
         self.head = head # Armazena a referência ao objeto head
         self.banco = head.banco # Usa o banco de dados do head
@@ -71,10 +66,6 @@ class ReconhecimentoFace: # class ReconhecimentoFace:
 
     # ---------------- Treinar reconhecedor LBPH ----------------
     def treinar_reconhecedor(self): # -> tuple:
-        """
-        Treina o reconhecedor LBPH usando todas as fotos cadastradas. 
-        Retorna o recognizer e o dicionário de labels.
-        """
         faces = []          # Lista de imagens de rosto
         labels = []         # Lista de pessoas correspondentes a cada rosto
         label_dict = {}     # Dicionário para mapear nomes a pessoas numéricas
