@@ -1,18 +1,18 @@
-from bibliotecas import cv2, os, np
-from reconhecimento_head import ReconhecimentoHead
+from bibliotecas import cv2, os, np # Bibliotecas necessárias importadas de reconhecimento_face.py
+from reconhecimento_head import ReconhecimentoHead # Importa a classe ReconhecimentoHead
 
-class ReconhecimentoFace:
+class ReconhecimentoFace: # class ReconhecimentoFace:
     """
     Classe que gerencia o cadastro de rostos e o reconhecimento facial usando LBPH.
     Usa as configurações e variáveis do ReconhecimentoHead.
     """
 
-    def __init__(self, head: ReconhecimentoHead):
-        self.head = head
-        self.banco = head.banco
-        self.BASE_DIR = head.BASE_DIR
-        self.DB_FILE = head.DB_FILE
-        self.face_cascade = head.face_cascade
+    def __init__(self, head: ReconhecimentoHead): #constructor 
+        self.head = head # Armazena a referência ao objeto head
+        self.banco = head.banco # Usa o banco de dados do head
+        self.BASE_DIR = head.BASE_DIR # Diretório base para fotos
+        self.DB_FILE = head.DB_FILE # Arquivo do banco de dados 
+        self.face_cascade = head.face_cascade # Classificador Haar Cascade para detecção de faces
 
     # ---------------- Cadastro de pessoas ----------------
     def cadastrar(self, nome: str, idade: str):
@@ -37,7 +37,7 @@ class ReconhecimentoFace:
                 break # Sai do loop
 
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # Converte para escala de cinza
-            rostos = self.face_cascade.detectMultiScale( # Detecta rostos
+            rostos = self.face_cascade.detectMultiScale( # tupla de rostos detectados 
                 gray, # Imagem em escala de cinza
                 scaleFactor=self.head.scaleFactor, # Fator de escala
                 minNeighbors=self.head.minNeighbors, # Vizinhos mínimos para detecção 
