@@ -2,5 +2,9 @@
     "Emanuel ": {
         "idade": "19",
         "num_fotos": 250
+    },
+    "Costa": {
+        "idade": "20",
+        "num_fotos": 500
     }
 }
